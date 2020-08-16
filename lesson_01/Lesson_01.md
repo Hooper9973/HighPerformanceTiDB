@@ -396,3 +396,12 @@ mysql>  SELECT * FROM cluster_info;
 
 ![image-20200816215300497](Lesson_01.assets/image-20200816215300497.png)
 
+日志如下
+
+```
+[2020/08/16 22:00:58.212 +08:00] [INFO] [session.go:1496] ["hello transaction"]
+[2020/08/16 22:00:58.224 +08:00] [INFO] [session.go:1496] ["hello transaction"]
+[2020/08/16 22:00:58.233 +08:00] [INFO] [session.go:1496] ["hello transaction"]
+[2020/08/16 22:00:58.239 +08:00] [INFO] [session.go:1496] ["hello transaction"]
+```
+
