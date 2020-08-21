@@ -273,7 +273,7 @@ mysql>  SELECT * FROM cluster_info;
 
 在 `tidb/session/session.go` 中 NexTxn()函数增加打印 `logutil.BgLogger().Info("hello transaction")`语句，即可实现功能。
 
-![image-20200822074542372](/Users/luhaopeng/MyGithub/HighPerformanceTiDB/lesson_01/Lesson_01.assets/image-20200822074542372.png)
+![image-20200822074542372](Lesson_01.assets/image-20200822074542372.png)
 
 日志如下
 
