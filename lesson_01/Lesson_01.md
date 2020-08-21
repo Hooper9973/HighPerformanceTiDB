@@ -226,8 +226,9 @@ cd /root/data/tidb/bin
 
 4.启动TiDB
 
-```
-./tidb-server --advertise-address=10.204.246.196  --store=tikv --path=127.0.0.1:2379
+```shell
+./tidb-server --advertise-address=192.168.3.21 --store=tikv --path=127.0.0.1:2379
+#advertise-address 为本机ip
 ```
 
 5.访问TiDB数据库并检查
@@ -268,133 +269,11 @@ mysql>  SELECT * FROM cluster_info;
 5 rows in set (0.02 sec)
 ```
 
-6.检查集群
-
-进入交互模式
-
-```
-./pd-ctl -i 
-
-» store
-{
-  "count": 3,
-  "stores": [
-    {
-      "store": {
-        "id": 1,
-        "address": "127.0.0.1:10927",
-        "labels": [
-          {
-            "key": "host",
-            "value": "tikv1"
-          }
-        ],
-        "version": "4.1.0-alpha",
-        "status_address": "127.0.0.1:20181",
-        "git_hash": "ae7a6ecee6e3367da016df0293a9ffe9cc2b5705",
-        "start_timestamp": 1597532349,
-        "deploy_path": "/root/data/tidb/bin",
-        "last_heartbeat": 1597541630901730391,
-        "state_name": "Up"
-      },
-      "status": {
-        "capacity": "35.03GiB",
-        "available": "12.02GiB",
-        "used_size": "32.76MiB",
-        "leader_count": 14,
-        "leader_weight": 1,
-        "leader_score": 14,
-        "leader_size": 14,
-        "region_count": 22,
-        "region_weight": 1,
-        "region_score": 22,
-        "region_size": 22,
-        "start_ts": "2020-08-15T19:59:09-03:00",
-        "last_heartbeat_ts": "2020-08-15T22:33:50.901730391-03:00",
-        "uptime": "2h34m41.901730391s"
-      }
-    },
-    {
-      "store": {
-        "id": 4,
-        "address": "127.0.0.1:10928",
-        "labels": [
-          {
-            "key": "host",
-            "value": "tikv2"
-          }
-        ],
-        "version": "4.1.0-alpha",
-        "status_address": "127.0.0.1:20182",
-        "git_hash": "ae7a6ecee6e3367da016df0293a9ffe9cc2b5705",
-        "start_timestamp": 1597532385,
-        "deploy_path": "/root/data/tidb/bin",
-        "last_heartbeat": 1597541627034611795,
-        "state_name": "Up"
-      },
-      "status": {
-        "capacity": "35.03GiB",
-        "available": "12.02GiB",
-        "used_size": "32.75MiB",
-        "leader_count": 4,
-        "leader_weight": 1,
-        "leader_score": 4,
-        "leader_size": 4,
-        "region_count": 22,
-        "region_weight": 1,
-        "region_score": 22,
-        "region_size": 22,
-        "start_ts": "2020-08-15T19:59:45-03:00",
-        "last_heartbeat_ts": "2020-08-15T22:33:47.034611795-03:00",
-        "uptime": "2h34m2.034611795s"
-      }
-    },
-    {
-      "store": {
-        "id": 6,
-        "address": "127.0.0.1:10929",
-        "labels": [
-          {
-            "key": "host",
-            "value": "tikv3"
-          }
-        ],
-        "version": "4.1.0-alpha",
-        "status_address": "127.0.0.1:20183",
-        "git_hash": "ae7a6ecee6e3367da016df0293a9ffe9cc2b5705",
-        "start_timestamp": 1597532403,
-        "deploy_path": "/root/data/tidb/bin",
-        "last_heartbeat": 1597541625320647249,
-        "state_name": "Up"
-      },
-      "status": {
-        "capacity": "35.03GiB",
-        "available": "12.02GiB",
-        "used_size": "32.75MiB",
-        "leader_count": 4,
-        "leader_weight": 1,
-        "leader_score": 4,
-        "leader_size": 4,
-        "region_count": 22,
-        "region_weight": 1,
-        "region_score": 22,
-        "region_size": 22,
-        "start_ts": "2020-08-15T20:00:03-03:00",
-        "last_heartbeat_ts": "2020-08-15T22:33:45.320647249-03:00",
-        "uptime": "2h33m42.320647249s"
-      }
-    }
-  ]
-}
-
-
-```
-
 # 改写
 
 在 `tidb/session/session.go` 中 NexTxn()函数增加打印 `logutil.BgLogger().Info("hello transaction")`语句，即可实现功能。
 
-![image-20200816215300497](Lesson_01.assets/image-20200816215300497.png)
+![image-20200822074542372](/Users/luhaopeng/MyGithub/HighPerformanceTiDB/lesson_01/Lesson_01.assets/image-20200822074542372.png)
 
 日志如下
 
